@@ -42,6 +42,14 @@
     if (event.target.tagName === 'A') {
       getPageData(event.target.dataset.page)
       currentPage = Number(event.target.dataset.page)
+
+      // clear the all page number highlight
+      let allPaginationPage = document.querySelectorAll('.page-item')
+      allPaginationPage.forEach(function (element) {
+        element.classList.remove('active')
+      })
+      // highlight the current page number
+      event.target.parentElement.classList.add('active')
     }
   })
 
