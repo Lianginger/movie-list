@@ -87,7 +87,7 @@
     if (showMode === 'card') {
       data.forEach(element => {
         htmlContent += `
-        <div class="col-sm-3">
+        <div class="col-sm-3 mt-3">
           <div class="card">
             <img class="card-img-top" src="${POSTER_URL}${element.image}" alt="Card image cap">
             <div class="card-body movie-item-body">
@@ -107,7 +107,7 @@
     } else if (showMode === 'list') {
       data.forEach(element => {
         htmlContent += `
-            <div style="width: 100%; height: auto; border-top: 1px solid #c4c4c4; padding: 0.4em 0em">
+            <div style="width: 100%; height: auto; border-top: 1px solid #c4c4c4; padding: 0.4em 0em; line-height: 2em">
               ${element.title}
               <!-- "More" button -->
               <div class="float-right">
