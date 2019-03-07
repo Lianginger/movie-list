@@ -1,5 +1,6 @@
 # Movie List
 A simple web application for movie fanatic
+[Github Page link](https://lianginger.github.io/movie-list/)
 
 ## Features
 - listing movies from movie api
