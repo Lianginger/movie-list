@@ -4,6 +4,7 @@
   const POSTER_URL = BASE_URL + '/posters/'
   const dataPanel = document.getElementById('data-panel')
   let data = []
+  let searchingData = []
   // search
   const searchBtn = document.getElementById('submit-search')
   const searchInput = document.getElementById('search')
@@ -18,8 +19,9 @@
     .then((response) => {
       console.log(...response.data.results)
       data.push(...response.data.results)
-      getTotalPages(data)
-      getPageData(1, data)
+      searchingData = data
+      getTotalPages(searchingData)
+      getPageData(1, searchingData)
     })
     .catch((err) => (console.log(err)))
 
@@ -54,7 +56,7 @@
   })
 
   function getPageData(pageNum, inputData) {
-    let paginationData = inputData || data
+    let paginationData = inputData || searchingData
     let offset = (pageNum - 1) * ITEM_PER_PAGE
     let pageData = paginationData.slice(offset, offset + ITEM_PER_PAGE)
     displayDataList(pageData)
@@ -62,14 +64,13 @@
 
   // listen to search btn click event
   searchBtn.addEventListener('click', event => {
-    let results = []
     event.preventDefault()
     const regex = new RegExp(searchInput.value, 'i')
 
-    results = data.filter(movie => movie.title.match(regex))
-    console.log(results)
-    getTotalPages(results)
-    getPageData(1, results)
+    searchingData = data.filter(movie => movie.title.match(regex))
+    console.log(searchingData)
+    getTotalPages(searchingData)
+    getPageData(1, searchingData)
     currentPage = 1
   })
 
